@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head><title>Login</title><link rel="stylesheet" href="style.css"></head>
+<body>
+  <h2>Intern Portal Login</h2>
+  <div class="container">
+    <div class="form-container sign-in-container">
+      <form id="signInForm">
+        <h1>Sign In</h1>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button class="SignIn" type="submit">Sign In</button>
+      </form>
+    </div>
+    <div class="form-container sign-up-container">
+      <form id="signUpForm">
+        <h1>Sign Up</h1>
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button class="SignUp" type="submit">Sign Up</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Welcome Back!</h1>
+          <p>To keep connected with us please login with your personal info</p>
+          <button class="ghost" id="signInBtn">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>Hello, Friend!</h1>
+          <p>Enter your personal details and start journey with us</p>
+          <button class="ghost" id="signUpBtn">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+      const signUpButton = document.getElementById('signUpBtn');
+const signInButton = document.getElementById('signInBtn');
+const container = document.querySelector('.container');
+const para = document.getElementById('para');
+
+signUpButton.addEventListener('click', () => {
+  document.querySelector(".sign-in-container").style.display = "none";
+  document.querySelector(".overlay-right").style.display = "none";
+  document.querySelector(".sign-up-container").style.display = "block";
+  document.querySelector(".overlay-left").style.display = "block";
+});
+
+signInButton.addEventListener('click', () => {
+  document.querySelector(".sign-in-container").style.display = "block";
+  document.querySelector(".overlay-right").style.display = "block";
+  document.querySelector(".sign-up-container").style.display = "none";
+  document.querySelector(".overlay-left").style.display = "none";
+});
+
+const signInForm = document.getElementById('signInForm');
+const signUpForm = document.getElementById('signUpForm');
+
+signInForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = signInForm.querySelector('input[type="email"]').value;
+  const password = signInForm.querySelector('input[type="password"]').value;
+  // Perform sign-in authentication
+  console.log('Sign in:', email, password);
+});
+
+signUpForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = signUpForm.querySelector('input[type="text"]').value;
+  const email = signUpForm.querySelector('input[type="email"]').value;
+  const password = signUpForm.querySelector('input[type="password"]').value;
+  // Perform sign-up authentication
+  console.log('Sign up:', name, email, password);
+});
+
+const SignIn = document.querySelector(".SignIn");
+const SignUp = document.querySelector(".SignUp");
+
+SignIn.addEventListener('click', () => {
+  document.querySelector(".container").style.display = "none";
+  document.querySelector(".overlay-container").style.display = "none";
+  window.location.href = "dashboard.html";
+});
+
+SignUp.addEventListener('click', () => {
+  alert('You Are Signed Up Successfully');
+});
+
+  </script>
+
+</body></html>
